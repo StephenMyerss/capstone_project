@@ -12,7 +12,7 @@
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark">
             <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <img class="innovation-logo" src="./innovationImages/Screenshot 2024-02-20 at 8.29.06 PM.png" alt="">
+                <img class="innovation-logo" src="../innovationImages/Screenshot%202024-02-20%20at%208.29.06%E2%80%AFPM.png" alt="">
             </div>
             <div class="text-center justify-content-center border-dark">
                 <h1 class="display-4 fw-bold text-body-emphasis">Admin Page</h1>

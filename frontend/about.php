@@ -11,8 +11,8 @@
 <body>
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark">
-            <a href="innovation_hub.html" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <img class="innovation-logo" src="./innovationImages/Screenshot 2024-02-20 at 8.29.06 PM.png" alt="">
+            <a href="innovation_hub.php" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img class="innovation-logo" src="../innovationImages/Screenshot%202024-02-20%20at%208.29.06%E2%80%AFPM.png" alt="">
             </a>
         </header>
     </div>
@@ -26,7 +26,7 @@
             </div>
             <div class="overflow-hidden">
               <div class="container px-5 mb-5">
-                <img src="./innovationImages/website-image.png" class="img-fluid border rounded-3 shadow-lg mb-7" alt="Example image" width="700" height="500" loading="lazy">
+                <img src="../innovationImages/website-image.png" class="img-fluid border rounded-3 shadow-lg mb-7" alt="Example image" width="700" height="500" loading="lazy">
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
         <div class="container col-xxl-8 px-4">
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
               <div class="col-10 col-sm-8 col-lg-6">
-                <img src="./innovationImages/innovation-pic.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <img src="../innovationImages/innovation-pic.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
               </div>
               <div class="col-lg-6">
                 <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Innovation</h1>
@@ -48,7 +48,7 @@
         <div class="container col-xxl-8 px-4 ">
         <div class="row flex-lg-row align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-            <img src="./innovationImages/collaboration.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            <img src="../innovationImages/collaboration.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
             <div class="col-lg-6">
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Collaboration</h1>
@@ -60,7 +60,7 @@
         <div class="container col-xxl-8 px-4">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-            <img src="./innovationImages/creativity.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            <img src="../innovationImages/creativity.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
             <div class="col-lg-6">
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Creativity</h1>
