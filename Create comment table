@@ -1,0 +1,26 @@
+$sqlComment = "
+CREATE TABLE IF NOT EXISTS Comment
+(
+  CommentID INT NOT NULL AUTO_INCREMENT,
+  CommentSubmission VARCHAR(400) NOT NULL,
+  IdeaID INT NOT NULL,
+  PRIMARY KEY (CommentID),
+  FOREIGN KEY (IdeaID) REFERENCES Idea(IdeaID)
+);
+";
+
+// Execute the SQL script
+if (mysqli_query($conn, $sqlInnovator) &&
+    mysqli_query($conn, $sqlIH_Support) &&
+    mysqli_query($conn, $sqlCompany) &&
+    mysqli_query($conn, $sqlAdmin) &&
+    mysqli_query($conn, $sqlIdea) &&
+    mysqli_query($conn, $sqlComment)) {
+    echo "Tables created successfully or already exist";
+} else {
+    echo "Error creating tables: " . mysqli_error($conn);
+}
+
+// Close the connection to the 'innovationhub' database
+mysqli_close($conn);
+?>
