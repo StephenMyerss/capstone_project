@@ -8,12 +8,18 @@
     <link rel="stylesheet" href="style.css">
     <title>About</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark">
-            <a href="innovation_hub.php" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <img class="innovation-logo" src="../innovationImages/Screenshot%202024-02-20%20at%208.29.06%E2%80%AFPM.png" alt="">
-            </a>
+            <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png" alt="">
+            </div>
+            <ul class="nav align-items-center">
+                <li class="nav-item fs-5"><a href="innovation_hub.php" class="color nav-link" draggable="true">Idea Submission</a></li>
+            </ul> 
+            <ul class="nav align-items-center">
+                <li class="nav-item fs-5"><a href="admin_login.php" class="color nav-link" draggable="true">Admin Portal</a></li>
+            </ul>
         </header>
     </div>
 
@@ -72,7 +78,7 @@
           
     </div>
 
-    <div class="container">
+    <div class="container mt-auto">
         <footer class="py-3 my-4 border-top border-dark">
             <p class="text-center text-body-secondary">© 2024 Cameron University Capstone</p>
         </footer>

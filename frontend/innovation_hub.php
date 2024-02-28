@@ -11,23 +11,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark">
-        <a href="" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <img class="innovation-logo" src="../innovationImages/Screenshot%202024-02-20%20at%208.29.06%E2%80%AFPM.png"
+        <a href="about.php" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png"
                  alt="">
         </a>
         <ul class="nav align-items-center">
-            <li class="nav-item fs-5"><a href="about.php" class="color nav-link" draggable="true">About</a></li>
-        </ul>
+            <li class="nav-item fs-5"><a href="about.php" class="color nav-link" draggable="true">Back to home</a></li>
+        </ul> 
     </header>
 </div>
 
 <div class="container">
     <div class="px-4 my-5 text-center">
-        <img class="custom-rounded img-fluid d-block mx-auto mb-4" src="../innovationImages/smrt%20logo%20dark.png"
+        <img class="custom-rounded img-fluid d-block mx-auto mb-4" src="../innovationImages/smrt_logo_dark.png"
              alt="" width="250" height="250">
         <h1 class="display-4 fw-bold text-body-emphasis">Innovation Hub</h1>
         <div class="col-lg-6 mx-auto">
@@ -67,7 +67,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="mx-auto col-md-6 fs-5 form-group py-3">
+            <div class="mx-auto col-md-6 fs-5 form-group mb-3">
                 <label class="fw-bold" for="exampleFormControlInput1">Email</label>
                 <input name="email" type="text" class="form-control border-3" id="exampleFormControlInput1">
             </div>
@@ -107,7 +107,7 @@
 
 </div>
 
-<div class="container">
+<div class="container mt-auto">
     <footer class="py-3 my-4 border-top border-dark">
         <p class="text-center text-body-secondary">© 2024 Cameron University Capstone</p>
     </footer>

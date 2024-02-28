@@ -8,19 +8,23 @@
     <link href="style.css" rel="stylesheet">
     <title>Admin</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark">
             <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <img class="innovation-logo" src="../innovationImages/Screenshot%202024-02-20%20at%208.29.06%E2%80%AFPM.png" alt="">
+                <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png" alt="">
             </div>
-            <div class="text-center justify-content-center border-dark">
-                <h1 class="display-4 fw-bold text-body-emphasis">Admin Page</h1>
-              </div>
+            <ul class="nav align-items-center">
+                <li class="nav-item fs-5"><a href="" class="color nav-link" draggable="true">Logout</a></li>
+            </ul>
+            
         </header>
     </div>
 
-    <div class="container fs-4 mt-5">
+    <div class="container fs-4 ">
+        <div class="text-center justify-content-center border-dark">
+          <h1 class="display-4 fw-bold text-body-emphasis">Admin Page</h1>
+        </div>
         <h2 class="mb-4 display-5 fw-bold">User Posts</h2>
         <div class="mb-3">
           <label for="filterDate">Filter by Date:</label>
@@ -96,7 +100,7 @@
     
       
 
-    <div class="container">
+    <div class="container mt-auto">
         <footer class="py-3 my-4 border-top border-dark">
             <p class="text-center text-body-secondary">© 2024 Cameron University Capstone</p>
         </footer>
