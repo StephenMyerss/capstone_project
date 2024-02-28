@@ -8,8 +8,8 @@
     try {
         $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
     }
-    catch(mysqli_sql_exception) {
-        echo"could not connect!!!<br>";
+    catch(mysqli_sql_exception $e) {
+        echo"could not connect!!!". $e->getMessage() ."<br>";
     }
     
 ?>

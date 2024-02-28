@@ -15,12 +15,12 @@
 
 <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark">
-        <a href="about.php" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <a href="../index.php" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png"
                  alt="">
         </a>
         <ul class="nav align-items-center">
-            <li class="nav-item fs-5"><a href="about.php" class="color nav-link" draggable="true">Back to home</a></li>
+            <li class="nav-item fs-5"><a href="../index.php" class="color nav-link" draggable="true">Back to home</a></li>
         </ul> 
     </header>
 </div>
