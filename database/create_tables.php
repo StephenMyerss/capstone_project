@@ -44,13 +44,19 @@ CREATE TABLE IF NOT EXISTS Company
 $sqlAdmin = "
 CREATE TABLE IF NOT EXISTS Admin
 (
-  AdminID INT NOT NULL AUTO_INCREMENT,
+    AdminID INT NOT NULL AUTO_INCREMENT,
+    AdminEmail VARCHAR(50) NOT NULL,
+    AdminPassword VARCHAR(255) NOT NULL,
+    PRIMARY KEY (AdminID)
+    /*
+       AdminID INT NOT NULL AUTO_INCREMENT,
   AdminName VARCHAR(30) NOT NULL,
   AdminPassword VARCHAR(30) NOT NULL,
   AdminEmail VARCHAR(30) NOT NULL,
   CompanyID INT NOT NULL,
   PRIMARY KEY (AdminID),
   FOREIGN KEY (CompanyID) REFERENCES Company(CompanyID)
+     */
 );
 ";
 
