@@ -122,14 +122,15 @@ if (isset($_POST["submit"])) {
     $anonymous = isset($_POST["anonymous"]) ? 1 : 0;
 
     // Get values from the form
-    $first_name = $anonymous ? "" : $_POST["first_name"];
-    $last_name = $anonymous ? "" : $_POST["last_name"];
-    $job_title = $anonymous ? "" : $_POST["job_title"];
-    $email = $anonymous ? "" : $_POST["email"];
+    $first_name = $anonymous ? "anony" : $_POST["first_name"];
+    $last_name = $anonymous ? "mous" : $_POST["last_name"];
+    $job_title = $anonymous ? "none" : $_POST["job_title"];
+    $email = $anonymous ? "anon@gmail.com" : $_POST["email"];
     $company = $anonymous ? "" : $_POST["company"];
     $idea_text = $_POST["idea_text"];
 
-    if (($anonymous && !empty($idea_text)) || (!$anonymous && !empty($first_name) && !empty($last_name) && !empty($job_title) && !empty($idea_text))) {
+    if (($anonymous && !empty($idea_text)) /*|| (!$anonymous && !empty($first_name) && !empty($last_name) && !empty($job_title) && !empty($idea_text))*/) 
+    {
         // Insert data into the database (replace 'Innovator' with the correct table name)
         $sql = "INSERT INTO Innovator (InnovatorAnonymous, InnovatorFirstName, InnovatorLastName, InnovatorEmail, InnovatorJobTitle, InnovatorIdea, InnovatorCompany)
         VALUES ('$anonymous', '$first_name', '$last_name', '$email', '$job_title', '$idea_text', '$company')";
@@ -141,7 +142,23 @@ if (isset($_POST["submit"])) {
         } catch (mysqli_sql_exception $e) {
             echo '<script>alert("Error submitting idea: ' . $e->getMessage() . '");</script>';
         }
-    } else {
+    }
+    else if(!$anonymous && !empty($first_name) && !empty($last_name) && !empty($job_title) && !empty($idea_text))
+    {
+        $sql = "INSERT INTO Innovator (InnovatorAnonymous, InnovatorFirstName, InnovatorLastName, InnovatorEmail, InnovatorJobTitle, InnovatorIdea, InnovatorCompany)
+        VALUES ('$anonymous', '$first_name', '$last_name', '$email', '$job_title', '$idea_text', '$company')";try {
+        mysqli_query($conn, $sql);
+        echo '<script>alert("Idea submitted successfully!");</script>';
+        // Redirect or perform additional actions as needed
+    } 
+    catch (mysqli_sql_exception $e) 
+    {
+        echo '<script>alert("Error submitting idea: ' . $e->getMessage() . '");</script>';
+    }
+
+    }
+    else 
+    {
         echo '<script>alert("Please fill in all required fields.");</script>';
     }
 }
