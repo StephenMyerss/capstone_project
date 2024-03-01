@@ -1,5 +1,5 @@
 <?php
-    include("../database/connect.php");
+include("../database/connect.php");
 ?>
 
 <!DOCTYPE html>
@@ -15,13 +15,15 @@
 
 <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark">
-        <a href="../index.php" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <a href="../index.php"
+           class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png"
                  alt="">
         </a>
         <ul class="nav align-items-center">
-            <li class="nav-item fs-5"><a href="../index.php" class="color nav-link" draggable="true">Back to home</a></li>
-        </ul> 
+            <li class="nav-item fs-5"><a href="../index.php" class="color nav-link" draggable="true">Back to home</a>
+            </li>
+        </ul>
     </header>
 </div>
 
@@ -77,16 +79,16 @@
             <div class="mx-auto col-md-6 fs-5 form-group">
                 <label class="fw-bold" for="exampleFormControlSelect1">Company</label>
                 <select class="form-control border-3" id="exampleFormControlSelect1" name="company">
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
-                    <option value="">6</option>
-                    <option value="">7</option>
-                    <option value="">8</option>
-                    <option value="">9</option>
-                    <option value="">10</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                 </select>
             </div>
         </div>
@@ -116,53 +118,7 @@
 </html>
 
 <?php
-
-if (isset($_POST["submit"])) {
-    // Check if the "Anonymous Post" checkbox is checked
-    $anonymous = isset($_POST["anonymous"]) ? 1 : 0;
-
-    // Get values from the form
-    $first_name = $anonymous ? "anony" : $_POST["first_name"];
-    $last_name = $anonymous ? "mous" : $_POST["last_name"];
-    $job_title = $anonymous ? "none" : $_POST["job_title"];
-    $email = $anonymous ? "anon@gmail.com" : $_POST["email"];
-    $company = $anonymous ? "" : $_POST["company"];
-    $idea_text = $_POST["idea_text"];
-
-    if (($anonymous && !empty($idea_text)) /*|| (!$anonymous && !empty($first_name) && !empty($last_name) && !empty($job_title) && !empty($idea_text))*/) 
-    {
-        // Insert data into the database (replace 'Innovator' with the correct table name)
-        $sql = "INSERT INTO Innovator (InnovatorAnonymous, InnovatorFirstName, InnovatorLastName, InnovatorEmail, InnovatorJobTitle, InnovatorIdea, InnovatorCompany)
-        VALUES ('$anonymous', '$first_name', '$last_name', '$email', '$job_title', '$idea_text', '$company')";
-
-        try {
-            mysqli_query($conn, $sql);
-            echo '<script>alert("Idea submitted successfully!");</script>';
-            // Redirect or perform additional actions as needed
-        } catch (mysqli_sql_exception $e) {
-            echo '<script>alert("Error submitting idea: ' . $e->getMessage() . '");</script>';
-        }
-    }
-    else if(!$anonymous && !empty($first_name) && !empty($last_name) && !empty($job_title) && !empty($idea_text))
-    {
-        $sql = "INSERT INTO Innovator (InnovatorAnonymous, InnovatorFirstName, InnovatorLastName, InnovatorEmail, InnovatorJobTitle, InnovatorIdea, InnovatorCompany)
-        VALUES ('$anonymous', '$first_name', '$last_name', '$email', '$job_title', '$idea_text', '$company')";try {
-        mysqli_query($conn, $sql);
-        echo '<script>alert("Idea submitted successfully!");</script>';
-        // Redirect or perform additional actions as needed
-    } 
-    catch (mysqli_sql_exception $e) 
-    {
-        echo '<script>alert("Error submitting idea: ' . $e->getMessage() . '");</script>';
-    }
-
-    }
-    else 
-    {
-        echo '<script>alert("Please fill in all required fields.");</script>';
-    }
-}
-
+include("../php_scripts/idea_submission.php");
 ?>
 
 

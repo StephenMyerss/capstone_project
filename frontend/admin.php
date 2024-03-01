@@ -1,75 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <title>Admin</title>
-</head>
-<body class="d-flex flex-column min-vh-100">
+<?php
+ob_start();
+session_start();
+?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+        <title>Admin</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark">
             <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png" alt="">
             </div>
-            <ul class="nav align-items-center">
-                <li class="nav-item fs-5"><a href="" class="color nav-link" draggable="true">Logout</a></li>
-            </ul>
-            
+            <form method="post" action="">
+                <ul class="nav align-items-center">
+                    <li class="nav-item fs-5">
+                        <button name="logout" type="submit" class="button-color button-width fs-5 btn btn-primary fw-bold">
+                            Logout
+                        </button>
+                    </li>
+                </ul>
+            </form>
         </header>
     </div>
 
+
     <div class="container fs-4 ">
         <div class="text-center justify-content-center border-dark">
-          <h1 class="display-4 fw-bold text-body-emphasis">Admin Page</h1>
+            <h1 class="display-4 fw-bold text-body-emphasis">Admin: <?php echo $_SESSION["admin_username"] ?></h1>
         </div>
-        <h2 class="mb-4 display-5 fw-bold">User Posts</h2>
+        <h2 class="mb-4 display-5 fw-bold">User Posts </h2>
         <div class="mb-3">
-          <label for="filterDate">Filter by Date:</label>
-          <div class="input-group">
-            <input type="date" id="filterDate" class="form-control fs-4">
-            <div class="input-group-append">
-              <button class="fs-4 btn button-color" type="button" id="clearDateBtn">Clear</button>
+            <label for="filterDate">Filter by Date:</label>
+            <div class="input-group">
+                <input type="date" id="filterDate" class="form-control fs-4">
+                <div class="input-group-append">
+                    <button class="fs-4 btn button-color" type="button" id="clearDateBtn">Clear</button>
+                </div>
             </div>
-          </div>
         </div>
         <div class="mb-3">
-          <label for="keywordSearch">Keyword Search:</label>
-          <div class="input-group">
-            <input type="text" id="keywordSearch" class="form-control fs-4">
-            <div class="input-group-append">
-              <button class="fs-4 btn button-color" type="button" id="clearKeywordBtn">Clear</button>
+            <label for="keywordSearch">Keyword Search:</label>
+            <div class="input-group">
+                <input type="text" id="keywordSearch" class="form-control fs-4">
+                <div class="input-group-append">
+                    <button class="fs-4 btn button-color" type="button" id="clearKeywordBtn">Clear</button>
+                </div>
             </div>
-          </div>
         </div>
         <div id="postList" class="list-group">
-          <!-- Posts will be dynamically populated here -->
+            <!-- Posts will be dynamically populated here -->
         </div>
-      </div>
-    
-      <!-- Bootstrap JS (Optional, if needed) -->
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <script>
+    </div>
+
+    <!-- Bootstrap JS (Optional, if needed) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
         // Example data - replace with actual data retrieved from the backend
         const posts = [
-          { id: 1, title: "First Post", content: "This is the first post by a user.", dateSubmitted: "2024-02-01" },
-          { id: 2, title: "Second Post", content: "This is the second post by a user.", dateSubmitted: "2024-02-10" },
-          { id: 3, title: "Third Post", content: "This is the third post by a user.", dateSubmitted: "2024-02-15" }
+            {id: 1, title: "First Post", content: "This is the first post by a user.", dateSubmitted: "2024-02-01"},
+            {id: 2, title: "Second Post", content: "This is the second post by a user.", dateSubmitted: "2024-02-10"},
+            {id: 3, title: "Third Post", content: "This is the third post by a user.", dateSubmitted: "2024-02-15"}
         ];
-    
+
         // Function to render posts based on filter inputs
         function renderPosts() {
-          const filterDate = document.getElementById('filterDate').value;
-          const keyword = document.getElementById('keywordSearch').value.toLowerCase();
-    
-          const postList = document.getElementById('postList');
-          postList.innerHTML = '';
-    
-          posts.forEach(post => {
-            if ((!filterDate || post.dateSubmitted === filterDate) && (!keyword || post.title.toLowerCase().includes(keyword) || post.content.toLowerCase().includes(keyword))) {
-              const postItem = `
+            const filterDate = document.getElementById('filterDate').value;
+            const keyword = document.getElementById('keywordSearch').value.toLowerCase();
+
+            const postList = document.getElementById('postList');
+            postList.innerHTML = '';
+
+            posts.forEach(post => {
+                if ((!filterDate || post.dateSubmitted === filterDate) && (!keyword || post.title.toLowerCase().includes(keyword) || post.content.toLowerCase().includes(keyword))) {
+                    const postItem = `
                 <a href="#" class="list-group-item list-group-item-action">
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">${post.title}</h5>
@@ -77,34 +87,42 @@
                   </div>
                   <p class="mb-1">${post.content}</p>
                 </a>`;
-              postList.insertAdjacentHTML('beforeend', postItem);
-            }
-          });
+                    postList.insertAdjacentHTML('beforeend', postItem);
+                }
+            });
         }
-    
+
         // Call renderPosts function when the page loads and when the filter inputs change
         document.addEventListener('DOMContentLoaded', () => {
-          renderPosts();
-          document.getElementById('filterDate').addEventListener('change', renderPosts);
-          document.getElementById('keywordSearch').addEventListener('input', renderPosts);
-          document.getElementById('clearDateBtn').addEventListener('click', () => {
-            document.getElementById('filterDate').value = '';
             renderPosts();
-          });
-          document.getElementById('clearKeywordBtn').addEventListener('click', () => {
-            document.getElementById('keywordSearch').value = '';
-            renderPosts();
-          });
+            document.getElementById('filterDate').addEventListener('change', renderPosts);
+            document.getElementById('keywordSearch').addEventListener('input', renderPosts);
+            document.getElementById('clearDateBtn').addEventListener('click', () => {
+                document.getElementById('filterDate').value = '';
+                renderPosts();
+            });
+            document.getElementById('clearKeywordBtn').addEventListener('click', () => {
+                document.getElementById('keywordSearch').value = '';
+                renderPosts();
+            });
         });
-      </script>
-    
-      
+    </script>
+
 
     <div class="container mt-auto">
         <footer class="py-3 my-4 border-top border-dark">
             <p class="text-center text-body-secondary">© 2024 Cameron University Capstone</p>
         </footer>
     </div>
-    
-</body>
-</html>
+
+    </body>
+    </html>
+
+<?php
+if (isset($_POST["logout"])) {
+    session_destroy();
+    header("Location: ../index.php");
+    exit();
+}
+ob_end_flush();
+?>
