@@ -27,8 +27,8 @@ session_start();
                     </li>
                 </ul>
             </form>
-        </header>
-    </div>
+    </header>
+</div>
 
 
     <div class="container fs-4 ">
@@ -108,12 +108,11 @@ session_start();
         });
     </script>
 
-
-    <div class="container mt-auto">
-        <footer class="py-3 my-4 border-top border-dark">
-            <p class="text-center text-body-secondary">© 2024 Cameron University Capstone</p>
-        </footer>
-    </div>
+<div class="container mt-auto">
+    <footer class="py-3 my-4 border-top border-dark">
+        <p class="text-center text-body-secondary">© 2024 Cameron University Capstone</p>
+    </footer>
+</div>
 
     </body>
     </html>
