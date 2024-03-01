@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS Idea
   InnovatorID INT,
   IdeaSubmission VARCHAR(5000) NOT NULL,
   CompanyID INT NOT NULL,
+  SubmissionDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (IdeaID),
   FOREIGN KEY (InnovatorID) REFERENCES Innovator(InnovatorID)
 );
