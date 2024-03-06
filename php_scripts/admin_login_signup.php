@@ -22,7 +22,9 @@ if (isset($_POST["signup"])) {
                 $result = mysqli_query($conn, $sql);
 
                 if ($result) {
-                    $_SESSION["admin_username"] = $_POST["username"] ;;
+                    $_SESSION["admin_username"] = $_POST["username"] ;
+                    $_SESSION["admin_company_id"] = $companyID;
+                    $_SESSION["admin_id"] = mysqli_insert_id($conn);
                     header("Location: admin.php");
                 } else {
                     echo "Registration failed. Please try again.";
@@ -57,6 +59,8 @@ if (isset($_POST["login"])) {
             // Verify the password using password_verify()
             if (password_verify($password, $row['AdminPassword'])) {
                 $_SESSION["admin_username"] = $_POST["username"];
+                $_SESSION["admin_id"] = $row["AdminID"];
+                $_SESSION["admin_company_id"] = $row["CompanyID"];
                 header("Location: admin.php");
             } else {
                 echo "Invalid password" . "<br>" . "<br>";
