@@ -1,6 +1,7 @@
 <?php
 ob_start();
 session_start();
+include("../database/connect.php");
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -31,82 +32,53 @@ session_start();
 </div>
 
 
+
     <div class="container fs-4 ">
         <div class="text-center justify-content-center border-dark">
             <h1 class="display-4 fw-bold text-body-emphasis">Admin: <?php echo $_SESSION["admin_username"] ?></h1>
+<!--                <h1 class="display-4 fw-bold text-body-emphasis">Admin ID: --><?php //echo $_SESSION["admin_id"] ?><!--</h1>-->
+<!--                <h1 class="display-4 fw-bold text-body-emphasis">Admin C ID: --><?php //echo $_SESSION["admin_company_id"] ?><!--</h1>-->
         </div>
         <h2 class="mb-4 display-5 fw-bold">User Posts </h2>
-        <div class="mb-3">
-            <label for="filterDate">Filter by Date:</label>
-            <div class="input-group">
-                <input type="date" id="filterDate" class="form-control fs-4">
-                <div class="input-group-append">
-                    <button class="fs-4 btn button-color" type="button" id="clearDateBtn">Clear</button>
+
+        <form method="get" action="admin.php">
+
+            <input type="hidden" name="admin_company_id" value="<?php echo $_SESSION["admin_company_id"]; ?>">
+            <div class="mb-3">
+                <label for="startDate">Start Date:</label>
+                <div class="input-group">
+                    <input type="date" id="startDate" name="startDate" class="form-control fs-4" value="<?php echo isset($_GET['startDate']) ? htmlspecialchars($_GET['startDate']) : ''; ?>">
+                    <div class="input-group-append">
+                        <button class="fs-4 btn button-color" type="button" id="clearStartDateBtn">Clear</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="mb-3">
-            <label for="keywordSearch">Keyword Search:</label>
-            <div class="input-group">
-                <input type="text" id="keywordSearch" class="form-control fs-4">
-                <div class="input-group-append">
-                    <button class="fs-4 btn button-color" type="button" id="clearKeywordBtn">Clear</button>
+
+            <div class="mb-3">
+                <label for="endDate">End Date:</label>
+                <div class="input-group">
+                    <input type="date" id="endDate" name="endDate" class="form-control fs-4" value="<?php echo isset($_GET['endDate']) ? htmlspecialchars($_GET['endDate']) : ''; ?>">
+                    <div class="input-group-append">
+                        <button class="fs-4 btn button-color" type="button" id="clearEndDateBtn">Clear</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="postList" class="list-group">
-            <!-- Posts will be dynamically populated here -->
+
+            <div class="text-center py-3">
+                <button name="submit" type="submit" class="button-color button-width fs-5 btn btn-primary fw-bold"">Filter</button>
+            </div>
+        </form>
+
+        <div id="ideaList" class="list-group">
+            <!-- Ideas will be dynamically populated here -->
+            <?php
+                include("../php_scripts/admin_page.php"); // Include the PHP script to generate ideas
+            ?>
+
         </div>
     </div>
 
-    <!-- Bootstrap JS (Optional, if needed) -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        // Example data - replace with actual data retrieved from the backend
-        const posts = [
-            {id: 1, title: "First Post", content: "This is the first post by a user.", dateSubmitted: "2024-02-01"},
-            {id: 2, title: "Second Post", content: "This is the second post by a user.", dateSubmitted: "2024-02-10"},
-            {id: 3, title: "Third Post", content: "This is the third post by a user.", dateSubmitted: "2024-02-15"}
-        ];
 
-        // Function to render posts based on filter inputs
-        function renderPosts() {
-            const filterDate = document.getElementById('filterDate').value;
-            const keyword = document.getElementById('keywordSearch').value.toLowerCase();
-
-            const postList = document.getElementById('postList');
-            postList.innerHTML = '';
-
-            posts.forEach(post => {
-                if ((!filterDate || post.dateSubmitted === filterDate) && (!keyword || post.title.toLowerCase().includes(keyword) || post.content.toLowerCase().includes(keyword))) {
-                    const postItem = `
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">${post.title}</h5>
-                    <small class="text-muted">Date Submitted: ${post.dateSubmitted}</small>
-                  </div>
-                  <p class="mb-1">${post.content}</p>
-                </a>`;
-                    postList.insertAdjacentHTML('beforeend', postItem);
-                }
-            });
-        }
-
-        // Call renderPosts function when the page loads and when the filter inputs change
-        document.addEventListener('DOMContentLoaded', () => {
-            renderPosts();
-            document.getElementById('filterDate').addEventListener('change', renderPosts);
-            document.getElementById('keywordSearch').addEventListener('input', renderPosts);
-            document.getElementById('clearDateBtn').addEventListener('click', () => {
-                document.getElementById('filterDate').value = '';
-                renderPosts();
-            });
-            document.getElementById('clearKeywordBtn').addEventListener('click', () => {
-                document.getElementById('keywordSearch').value = '';
-                renderPosts();
-            });
-        });
-    </script>
 
 <div class="container mt-auto">
     <footer class="py-3 my-4 border-top border-dark">
@@ -116,6 +88,15 @@ session_start();
 
     </body>
     </html>
+
+<script>
+    document.getElementById('clearStartDateBtn').addEventListener('click', function() {
+        document.getElementById('startDate').value = ''; // Clear the startDate input
+    });
+    document.getElementById('clearEndDateBtn').addEventListener('click', function() {
+        document.getElementById('endDate').value = ''; // Clear the startDate input
+    });
+</script>
 
 <?php
 if (isset($_POST["logout"])) {
