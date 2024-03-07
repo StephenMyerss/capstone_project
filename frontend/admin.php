@@ -14,8 +14,8 @@ include("../database/connect.php");
         <title>Admin</title>
     </head>
     <body class="d-flex flex-column min-vh-100">
-    <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom border-dark">
+    <div class="container header">
+        <header class="d-flex flex-wrap justify-content-center py-3 border-bottom border-dark">
             <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png" alt="">
             </div>
