@@ -44,6 +44,18 @@ include("../database/connect.php");
         <form method="get" action="admin.php">
 
             <input type="hidden" name="admin_company_id" value="<?php echo $_SESSION["admin_company_id"]; ?>">
+
+            <div class="row justify-content-center">
+                <div class="mx-auto col-md-6 fs-5 form-group">
+                    <label class="fw-bold" for="exampleFormControlSelect1">Status</label>
+                    <select class="form-control border-3" id="exampleFormControlSelect1" name="status">
+                        <option value="All" <?php echo (isset($_GET['status']) && $_GET['status'] == 'All') ? 'selected' : ''; ?>>All</option>
+                        <option value="Anonymous" <?php echo (isset($_GET['status']) && $_GET['status'] == 'Anonymous') ? 'selected' : ''; ?>>Anonymous</option>
+                        <option value="Acknowledged" <?php echo (isset($_GET['status']) && $_GET['status'] == 'Acknowledged') ? 'selected' : ''; ?>>Acknowledged</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label for="startDate">Start Date:</label>
                 <div class="input-group">

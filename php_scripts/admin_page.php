@@ -7,6 +7,7 @@ $admin_company_id = $_GET["admin_company_id"] ?? $_SESSION["admin_company_id"];
 // Check if the filter dates are set
 $startDate = $_GET['startDate'] ?? null;
 $endDate = $_GET['endDate'] ?? null;
+$status = $_GET['status'] ?? null;
 
 // Using prepared statements to prevent SQL injection
 $sql = "SELECT innovator.InnovatorFirstName, innovator.InnovatorLastName, idea.IdeaID, idea.SubmissionDate 
@@ -21,6 +22,15 @@ if (!empty($startDate) && !empty($endDate)) {
     $sql .= " AND DATE(idea.SubmissionDate) >= ?";
 } elseif (!empty($endDate)) {
     $sql .= " AND DATE(idea.SubmissionDate) <= ?";
+}
+
+// Append the anonymous filter conditions
+if ($status === 'All') {
+    $sql .= " AND innovator.InnovatorAnonymous IN (0, 1)";
+} elseif ($status === 'Anonymous') {
+    $sql .= " AND innovator.InnovatorAnonymous = 1";
+} elseif ($status === 'Acknowledged') {
+    $sql .= " AND innovator.InnovatorAnonymous = 0";
 }
 
 $stmt = mysqli_prepare($conn, $sql);
