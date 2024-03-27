@@ -10,7 +10,7 @@ $endDate = $_GET['endDate'] ?? null;
 $status = $_GET['status'] ?? null;
 
 // Using prepared statements to prevent SQL injection
-$sql = "SELECT innovator.InnovatorFirstName, innovator.InnovatorLastName, idea.IdeaID, idea.SubmissionDate 
+$sql = "SELECT innovator.InnovatorFirstName, innovator.InnovatorLastName, idea.IdeaID, idea.IdeaSubmission, idea.SubmissionDate 
         FROM innovator 
         JOIN idea ON innovator.InnovatorID = idea.InnovatorID 
         WHERE innovator.CompanyID = ?";
@@ -54,14 +54,15 @@ if ($stmt) {
 
     if (mysqli_num_rows($result) > 0) {
         echo "<table>";
-        echo "<tr><th>First Name</th><th>Last Name</th><th>IdeaID</th><th>Submission Date</th></tr>";
+        echo "<tr><th>First Name</th><th>Last Name</th><th>IdeaID</th><th>Submission Date</th><th>Idea</th></tr>";
 
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row["InnovatorFirstName"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["InnovatorLastName"]) . "</td>";
-            echo "<td>" . htmlspecialchars($row["IdeaID"]) . "</td>";
+            echo "<td><a href='../frontend/comment.php?idea_id=" . urlencode($row["IdeaID"]) . "'>" . htmlspecialchars($row["IdeaID"]) . "</a></td>";
             echo "<td>" . htmlspecialchars($row["SubmissionDate"]) . "</td>";
+            echo "<td>" . htmlspecialchars($row["IdeaSubmission"]) . "</td>";
             echo "</tr>";
         }
 
