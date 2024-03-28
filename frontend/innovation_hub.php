@@ -10,6 +10,7 @@ include("../database/connect.php");
     <title>Innovation Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <script src="../js/script.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -43,35 +44,36 @@ include("../database/connect.php");
 <div class="container">
     <form method="post">
 
-        <div class="container ">
+    <div class="container">
             <div class="mx-auto col-md-6 fs-5 form-check py-3 justify-content-center">
-                <input class="form-check-input border-4" type="checkbox" value="" id="defaultCheck1" name="anonymous">
+                <input class="form-check-input border-4" type="checkbox" value="" id="defaultCheck1" name="anonymous" onclick="toggleFields()">
                 <label class="fw-bold form-check-label" for="defaultCheck1">Anonymous Post</label>
             </div>
         </div>
 
+        <!-- Input fields for first name, last name, job title, and email -->
         <div class="row justify-content-center">
             <div class="col-md-3 fs-5">
                 <label class="fw-bold" for="firstname">First name</label>
-                <input name="first_name" type="text" class="form-control border-3">
+                <input name="first_name" type="text" class="form-control border-3" id="firstname">
             </div>
             <div class="col-md-3 fs-5">
                 <label class="fw-bold" for="lastname">Last name</label>
-                <input name="last_name" type="text" class="form-control border-3">
+                <input name="last_name" type="text" class="form-control border-3" id="lastname">
             </div>
         </div>
 
         <div class="row justify-content-center">
             <div class="mx-auto col-md-6 fs-5 form-group py-3">
                 <label class="fw-bold" for="exampleFormControlInput1">Job title</label>
-                <input name="job_title" type="text" class="form-control border-3" id="exampleFormControlInput1">
+                <input name="job_title" type="text" class="form-control border-3" id="jobtitle">
             </div>
         </div>
 
         <div class="row justify-content-center">
             <div class="mx-auto col-md-6 fs-5 form-group mb-3">
                 <label class="fw-bold" for="exampleFormControlInput1">Email</label>
-                <input name="email" type="text" class="form-control border-3" id="exampleFormControlInput1">
+                <input name="email" type="text" class="form-control border-3" id="email">
             </div>
         </div>
 
@@ -94,10 +96,11 @@ include("../database/connect.php");
         </div>
 
         <div class="row justify-content-center">
-            <div class="mx-auto col-md-6 fs-5 form-group py-3">
+            <div class="mx-auto col-md-6 fs-5 form-group py-3 position-relative">
                 <label class="fw-bold" for="exampleFormControlTextarea1">Innovation idea</label>
                 <textarea name="idea_text" class="form-control border-3" id="exampleFormControlTextarea1"
-                          rows="3"></textarea>
+                          rows="3" maxlength="5000" oninput="updateCharacterCount(this)"></textarea>
+                <span id="charCount" class="py-3 text-muted">0/5000 characters</span>
             </div>
         </div>
 
