@@ -1,5 +1,6 @@
 <?php
 include("../database/connect.php");
+include("../php_scripts/functions.php");
 ?>
 
 <!DOCTYPE html>
@@ -81,16 +82,7 @@ include("../database/connect.php");
             <div class="mx-auto col-md-6 fs-5 form-group">
                 <label class="fw-bold" for="exampleFormControlSelect1">Company</label>
                 <select class="form-control border-3" id="exampleFormControlSelect1" name="company">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
+                    <?php generateCompanyOptions(); ?>
                 </select>
             </div>
         </div>

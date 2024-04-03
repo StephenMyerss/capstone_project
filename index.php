@@ -18,7 +18,7 @@
                 <li class="nav-item fs-5"><a href="frontend/innovation_hub.php" class="color nav-link" draggable="true">Idea Submission</a></li>
             </ul> 
             <ul class="nav align-items-center">
-                <li class="nav-item fs-5"><a href="frontend/admin_login.php" class="color nav-link" draggable="true">Admin Portal</a></li>
+                <li class="nav-item fs-5"><a href="frontend/admin_login_home.php" class="color nav-link" draggable="true">Admin Portal</a></li>
             </ul>
         </header>
     </div>

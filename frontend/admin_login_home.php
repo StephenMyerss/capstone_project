@@ -31,7 +31,9 @@ include("../database/connect.php");
                 <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png" alt="">
             </a>
             <ul class="nav align-items-center">
-                <li class="nav-item fs-5"><a href="../index.php" class="color nav-link" draggable="true">Back to
+                <li class="nav-item fs-5">
+                    <a href="super_admin_home.php" class="color nav-link fs-5" draggable="true">Super Admin</a>
+                    <a href="../index.php" class="color nav-link" draggable="true">Back to
                         home</a></li>
             </ul>
         </header>
@@ -58,15 +60,10 @@ include("../database/connect.php");
                         Login
                     </button>
                 </div>
-                <div class="text-center">
-                    <button name="signup" type="submit" class="button-color button-width fs-5 btn btn-primary fw-bold">
-                        Sign Up
-                    </button>
-                </div>
+
             </form>
         </div>
     </div>
-
 
     <div class="container mt-auto">
         <footer class="py-3 my-4 border-top border-dark ">
@@ -77,6 +74,6 @@ include("../database/connect.php");
     </html>
 
 <?php
-include("../php_scripts/admin_login_signup.php");
+include("../php_scripts/admin_login.php");
 ?>
 
