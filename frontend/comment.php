@@ -57,12 +57,13 @@ include("../database/connect.php");
    
     <!-- Comment Section -->
     <div class="comment-section container mt-5">
-        <h2 class="mb-4">Comment</h2>
+        <h2 class="mb-4">Admin Comments</h2>
 
         <!-- Display existing comments -->
         <?php include("../php_scripts/get_comments.php"); ?>
 
         <!-- Comment Form -->
+        <br>
         <form id="comment-form" action="../php_scripts/comment_submission.php?idea_id=<?php echo htmlspecialchars($_GET['idea_id']); ?>" method="post">
             <!-- Hidden fields for admin details -->
             <input type="hidden" name="admin_username" value="<?php echo htmlspecialchars($_SESSION["admin_username"]); ?>">
