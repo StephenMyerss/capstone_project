@@ -9,8 +9,10 @@ if (isset($_POST["submit"])) {
     $last_name = $anonymous ? "" : $_POST["last_name"];
     $job_title = $anonymous ? "" : $_POST["job_title"];
     $email = $anonymous ? "" : $_POST["email"];
-    $company = $_POST["company"];
+    $companyName = $_POST["company"];
     $idea_text = $_POST["idea_text"];
+
+    $company = getCompanyIdFromName($companyName);
 
     if (($anonymous && !empty($idea_text))) {
         insertIntoInnovator(
