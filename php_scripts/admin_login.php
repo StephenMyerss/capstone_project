@@ -23,14 +23,8 @@ if (isset($_POST["login"])) {
                 $_SESSION["admin_company_id"] = $row["CompanyID"];
                 header("Location: admin.php");
             } else {
-                echo "Invalid password" . "<br>" . "<br>";
-                // rest is all for test
-                echo "Stored Hash: " . $row['AdminPassword'] . "<br>";
-                echo "User Input: " . $password . "<br>";
-                echo "Generated Hash: " . password_hash($password, PASSWORD_DEFAULT) . "<br>";
+                echo '<script>alert("Invalid username or password");</script>';
             }
-        } else {
-            echo "Invalid username";
         }
 
         mysqli_stmt_close($stmt);

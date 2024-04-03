@@ -11,7 +11,7 @@ include("../database/connect.php");
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <title>Login</title>
+        <title>Super Admin Login</title>
         <style>
             .login-container {
                 max-width: 400px;
@@ -32,7 +32,6 @@ include("../database/connect.php");
             </a>
             <ul class="nav align-items-center">
                 <li class="nav-item fs-5">
-                    <a href="super_admin_login_home.php" class="color nav-link fs-5" draggable="true">Super Admin</a>
                     <a href="../index.php" class="color nav-link" draggable="true">Back to
                         home</a></li>
             </ul>
@@ -40,7 +39,7 @@ include("../database/connect.php");
     </div>
     <div class="container fs-5">
         <div class="login-container">
-            <h2 class="mb-4">Admin Login</h2>
+            <h2 class="mb-4">Super Admin Login</h2>
             <form id="loginForm" action="<?php
             echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group mb-3">
@@ -74,6 +73,26 @@ include("../database/connect.php");
     </html>
 
 <?php
-include("../php_scripts/admin_login.php");
+if (isset($_POST["login"])) {
+    $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+
+    $superAdmins = [
+            'superadmin' => 'super',
+            'adminsuper' => 'admin',
+    ];
+
+    if (empty($username) || empty($password)) {
+        echo "Please enter both username and password";
+    } else {
+        if (array_key_exists($username, $superAdmins) && $superAdmins[$username] === $password) {
+                $_SESSION["super_admin_username"] = $_POST["username"];
+                header("Location: super_admin_home.php");
+            } else {
+                echo '<script>alert("Invalid username or password");</script>';
+            }
+        }
+    }
+
 ?>
 
