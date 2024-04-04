@@ -27,6 +27,19 @@ $insertDummyPeople = "INSERT INTO innovator (InnovatorAnonymous, InnovatorFirstN
     (0,'William', 'Clark','william.clark@example.com','Data Scientist',9),
     (0,'Sophia', 'White','sophia.white@example.com','Operations Manager',10)";
 
+$password = password_hash('admin', PASSWORD_DEFAULT);
+$insertAdmins = "INSERT INTO admin(AdminName, AdminPassword, AdminEmail, CompanyID) Values
+    ('admin1', '$password', 'admin1@admin.com', 1),
+    ('admin2', '$password', 'admin2@admin.com', 2),
+    ('admin3', '$password', 'admin3@admin.com', 3),
+    ('admin4', '$password', 'admin4@admin.com', 4),
+    ('admin5', '$password', 'admin5@admin.com', 5),
+    ('admin6', '$password', 'admin6@admin.com', 6),
+    ('admin7', '$password', 'admin7@admin.com', 7),
+    ('admin8', '$password', 'admin8@admin.com', 8),
+    ('admin9', '$password', 'admin9@admin.com', 9),
+    ('admin10', '$password', 'admin10@admin.com', 10)";
+
 // An array of random ideas to simulate different ideas
 $dummyIdeas = array(
     'The old oak tree stood majestically in the center of the park.',
@@ -44,12 +57,16 @@ $dummyIdeas = array(
 // Inserts the Companies and Employees
 if (
     mysqli_query($conn, $insertCompanyData ) && 
-    mysqli_query($conn, $insertDummyPeople))
+    mysqli_query($conn, $insertDummyPeople) &&
+    mysqli_query($conn, $insertAdmins)
+    ) 
     {
     echo "data inserted.";
 } else {
     echo "Error inserting data: " . mysqli_error($conn);
 }
+
+
 
 // Simulates a person entering 10 different ideas for each of the 10 companies
 for ($i = 0; $i < 10; $i++) {
