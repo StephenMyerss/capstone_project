@@ -39,6 +39,7 @@ $insertAdmins = "INSERT INTO admin(AdminName, AdminPassword, AdminEmail, Company
     ('admin8', '$password', 'admin8@admin.com', 8),
     ('admin9', '$password', 'admin9@admin.com', 9),
     ('admin10', '$password', 'admin10@admin.com', 10)";
+    
 
 // An array of random ideas to simulate different ideas
 $dummyIdeas = array(
