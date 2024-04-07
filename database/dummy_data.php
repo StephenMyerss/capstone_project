@@ -25,7 +25,10 @@ $insertDummyPeople = "INSERT INTO innovator (InnovatorAnonymous, InnovatorFirstN
     (0,'James', 'Anderson','james.anderson@example.com','Project Manager',7),
     (0,'Olivia', 'Taylor','olivia.taylor@example.com','Sales Associate',8),
     (0,'William', 'Clark','william.clark@example.com','Data Scientist',9),
-    (0,'Sophia', 'White','sophia.white@example.com','Operations Manager',10)";
+    (0,'Sophia', 'White','sophia.white@example.com','Operations Manager',10),
+    (1,'', '','','',1),
+    (1,'', '','','',2),
+    (1,'', '','','',3)";
 
 $password = password_hash('admin', PASSWORD_DEFAULT);
 $insertAdmins = "INSERT INTO admin(AdminName, AdminPassword, AdminEmail, CompanyID) Values
@@ -67,16 +70,33 @@ if (
     echo "Error inserting data: " . mysqli_error($conn);
 }
 
+// Define the range of years (e.g., last 10 years)
+$startYear = strtotime("-10 year");
+$endYear = strtotime("now");
 
+$c = 0;
 
 // Simulates a person entering 10 different ideas for each of the 10 companies
-for ($i = 0; $i < 10; $i++) {
-    for ($j = 0; $j < 10; $j++) {
-        $insertDummyIdeas = "INSERT INTO idea (InnovatorID, IdeaSubmission, CompanyID, SubmissionDate) VALUES ($i + 1, '{$dummyIdeas[$j]}', $i + 1, NOW())";
+for ($i = 0; $i < 13; $i++) {
+    for ($j = 0; $j < 5; $j++) {
+
+        // Generate a random timestamp within the defined range
+        $randomTimestamp = mt_rand($startYear, $endYear);
+
+        // Convert the timestamp to a MySQL-compatible datetime format
+        $randomDate = date("Y-m-d H:i:s", $randomTimestamp);
+
+        if ($c >= 10) {
+            $c = 0;
+        }
+
+        $randomIdea = rand(0, 9);
+
+        $insertDummyIdeas = "INSERT INTO idea (InnovatorID, IdeaSubmission, CompanyID, SubmissionDate) VALUES ($i + 1, '{$dummyIdeas[$randomIdea]}', $c + 1, '$randomDate')";
         mysqli_query($conn, $insertDummyIdeas) ;
     }
+    $c++;
 }
-
 
 // Close the connection to the 'innovationhub' database
 mysqli_close($conn);
