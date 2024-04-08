@@ -10,7 +10,7 @@ $endDate = $_GET['endDate'] ?? null;
 $status = $_GET['status'] ?? null;
 
 // Using prepared statements to prevent SQL injection
-$sql = "SELECT innovator.InnovatorFirstName, innovator.InnovatorLastName, idea.IdeaID, idea.IdeaSubmission, idea.SubmissionDate 
+$sql = "SELECT innovator.InnovatorFirstName, innovator.InnovatorLastName, idea.IdeaID, idea.IdeaSubmission, DATE(idea.SubmissionDate) AS SubmissionDate
         FROM innovator 
         JOIN idea ON innovator.InnovatorID = idea.InnovatorID 
         WHERE innovator.CompanyID = ?";
@@ -44,18 +44,25 @@ if ($stmt) {
         mysqli_stmt_bind_param($stmt, "ss", $admin_company_id, $startDate);
     } elseif (empty($startDate) && !empty($endDate)) {
         mysqli_stmt_bind_param($stmt, "ss", $admin_company_id, $endDate);
-    } else
+    } else {
         mysqli_stmt_bind_param($stmt, "s", $admin_company_id);
-
+    }
 
     mysqli_stmt_execute($stmt);
 
     $result = mysqli_stmt_get_result($stmt);
 
+    # Formatted the columns with fixed lengths besides the idea column
     if (mysqli_num_rows($result) > 0) {
-        echo "<table>";
-        echo "<tr><th>First Name</th><th>Last Name</th><th>IdeaID</th><th>Submission Date</th><th>Idea</th></tr>";
-
+        echo "<table border='1'>";
+        echo "<tr>";
+        echo "<th style='width: 160px;'>First Name</th>";
+        echo "<th style='width: 160px;'>Last Name</th>";
+        echo "<th style='width: 100px;'>Idea ID</th>";
+        echo "<th style='width: 220px;'>Submission Date</th>";
+        echo "<th>Idea</th>";
+        echo "</tr>";
+    
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row["InnovatorFirstName"]) . "</td>";
@@ -65,11 +72,12 @@ if ($stmt) {
             echo "<td>" . htmlspecialchars($row["IdeaSubmission"]) . "</td>";
             echo "</tr>";
         }
-
+    
         echo "</table>";
     } else {
         echo "No records found";
     }
+    
 
     mysqli_stmt_close($stmt);
 } else {
