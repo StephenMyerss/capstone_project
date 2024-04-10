@@ -32,9 +32,7 @@ include("../database/connect.php");
             </a>
             <ul class="nav align-items-center">
                 <li class="nav-item fs-5">
-                    <a href="super_admin_login_home.php" class="color nav-link fs-5" draggable="true">Super Admin</a>
-                    <a href="../index.php" class="color nav-link" draggable="true">Back to
-                        home</a></li>
+                    <a href="../index.php" class="color nav-link" draggable="true">Back to home</a></li>
             </ul>
         </header>
     </div>

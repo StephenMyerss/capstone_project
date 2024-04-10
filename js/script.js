@@ -31,3 +31,15 @@ function toggleFields() {
       emailInput.disabled = false;
   }
 }
+
+// Automatically hide success and error messages after 1 second
+setTimeout(function() {
+    var successMessage = document.getElementById("successMessage");
+    if (successMessage) {
+        successMessage.style.display = "none";
+    }
+    var errorMessage = document.getElementById("errorMessage");
+    if (errorMessage) {
+        errorMessage.style.display = "none";
+    }
+}, 1000);

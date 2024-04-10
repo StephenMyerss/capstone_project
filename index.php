@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+// Check if the logout parameter is set
+if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+    // Unset all session variables
+    $_SESSION = array();
+
+    // Destroy the session
+    session_destroy();
+
+    // Redirect to the same page after destroying the session
+    header("Location: index.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,15 +28,25 @@
 <body class="d-flex flex-column min-vh-100">
     <div class="container header">
         <header class="d-flex flex-wrap justify-content-center py-3 border-bottom border-dark">
-            <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <a href="index.php" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img class="innovation-logo" src="innovationImages/smrt_logo_light.png" alt="">
-            </div>
+            </a>
+
             <ul class="nav align-items-center">
-                <li class="nav-item fs-5"><a href="frontend/innovation_hub.php" class="color nav-link" draggable="true">Idea Submission</a></li>
-            </ul> 
-            <ul class="nav align-items-center">
-                <li class="nav-item fs-5"><a href="frontend/admin_login_home.php" class="color nav-link" draggable="true">Admin Portal</a></li>
+                <li class="nav-item fs-5">
+                    <?php if (isset($_SESSION['companyName'])): ?>
+                        Company: <?php echo $_SESSION['companyName']; ?>
+                        <ul class="nav align-items-center">
+                            <li class="nav-item fs-5">
+                                <a href="frontend/innovation_hub.php" class="color nav-link" draggable="true">Idea Submission</a>
+                            </li>
+                        </ul>
+                    <?php else: ?>
+                        <a href="frontend/admin_login_home.php" class="color nav-link" draggable="true">Admin Portal</a>
+                    <?php endif; ?>
+                </li>
             </ul>
+
         </header>
     </div>
 
@@ -54,7 +81,9 @@
         <div class="container col-xxl-8 px-4 ">
         <div class="row flex-lg-row align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-            <img src="innovationImages/collaboration.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <a href="index.php?logout=true" class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <img src="innovationImages/collaboration.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                </a>
             </div>
             <div class="col-lg-6">
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Collaboration</h1>

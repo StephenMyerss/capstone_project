@@ -9,13 +9,22 @@ if (isset($_POST["addCompany"])) {
     $companyName = $_POST["company_name"];
     $companyUrl = $_POST["company_url"];
 
-    if (!empty($companyName) && filter_var($companyUrl, FILTER_VALIDATE_URL)) {
-        insertIntoCompany($companyName, $companyUrl, $conn);
-//        $companyID = mysqli_insert_id($conn); // Get the ID of the last inserted record
-    } else {
-        $_SESSION['error_message'] = "Please provide a valid URL.";
+    // Check if the Company Name already exists
+    $checkCompanyQuery = "SELECT * FROM Company WHERE CompanyName = '$companyName'";
+    $checkCompanyResult = mysqli_query($conn, $checkCompanyQuery);
+
+    if (mysqli_num_rows($checkCompanyResult) > 0) {
+        $_SESSION['error_message'] = "Company Name already exists. Please add a different Company Name.";
         header("Location: ../frontend/add_company.php");
         exit();
+    } else {
+        if (!empty($companyName) && filter_var($companyUrl, FILTER_VALIDATE_URL)) {
+            insertIntoCompany($companyName, $companyUrl, $conn);
+        } else {
+            $_SESSION['error_message'] = "Please provide a valid URL.";
+            header("Location: ../frontend/add_company.php");
+            exit();
+        }
     }
 }
 

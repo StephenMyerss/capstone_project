@@ -90,4 +90,22 @@ function getAdminAndCompanyNameFromEmail($adminEmail) {
     }
 }
 
+// Function to check if the provided company name exists in the database
+function isValidCompany($companyName) {
+    global $conn; // Access the database connection within the function
+
+    // Prepare a statement to fetch the company names
+    $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM Company WHERE CompanyName = ?");
+    $stmt->bind_param("s", $companyName);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Fetch the count
+    $row = $result->fetch_assoc();
+    $count = $row['count'];
+
+    // Return true if count > 0, indicating the company exists
+    return $count === 1;
+}
+
 ?>
