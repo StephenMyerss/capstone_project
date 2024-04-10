@@ -26,26 +26,16 @@ include("../php_scripts/functions.php");
                      alt="">
             </a>
             <ul class="nav align-items-center">
-                <li class="nav-item fs-5"><a href="super_admin_home.php" class="color nav-link" draggable="true">Back to
+                <li class="nav-item fs-5"><a href="../super_admin.php" class="color nav-link" draggable="true">Back to
                         Super Admin</a>
                 </li>
             </ul>
         </header>
     </div>
 
-<?php
-// Display success message if exists
-if (isset($_SESSION['success_message'])) {
-    echo '<div id="successMessage" class="alert alert-success">' . $_SESSION['success_message'] . '</div>';
-    unset($_SESSION['success_message']); // Clear the message after displaying it
-}
-
-// Display error message if exists
-if (isset($_SESSION['error_message'])) {
-    echo '<div id="errorMessage" class="alert alert-danger">' . $_SESSION['error_message'] . '</div>';
-    unset($_SESSION['error_message']); // Clear the message after displaying it
-}
-?>
+    <?php
+    include("../php_scripts/displaySessionMessage.php");
+    ?>
 
 <div class="container fs-5 mt-3">
     <div class="login-container">
@@ -110,26 +100,16 @@ if (isset($_SESSION['error_message'])) {
     </div>
     </div>
 
-
     <div class="container mt-auto">
         <footer class="py-3 my-4 border-top border-dark">
             <p class="text-center text-body-secondary">© 2024 Cameron University Capstone</p>
         </footer>
     </div>
 
-    <script>
-        // Automatically hide success and error messages after 1 second
-        setTimeout(function () {
-            var successMessage = document.getElementById("successMessage");
-            if (successMessage) {
-                successMessage.style.display = "none";
-            }
-            var errorMessage = document.getElementById("errorMessage");
-            if (errorMessage) {
-                errorMessage.style.display = "none";
-            }
-        }, 1000);
+    <!--script to hide the session message after 1 sec-->
+    <script src="../js/script.js"></script>
 
+    <script>
         // Function to validate password fields
         function validatePasswords() {
             var password1 = document.getElementById("password").value;

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../database/connect.php");
+include("database/connect.php");
 ?>
 
     <!DOCTYPE html>
@@ -10,7 +10,7 @@ include("../database/connect.php");
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="frontend/style.css">
         <title>Super Admin Login</title>
         <style>
             .login-container {
@@ -26,15 +26,9 @@ include("../database/connect.php");
     <body class="d-flex flex-column min-vh-100">
     <div class="container header">
         <header class="d-flex flex-wrap justify-content-center py-3 border-bottom border-dark">
-            <a href="../index.php"
-               class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png" alt="">
-            </a>
-            <ul class="nav align-items-center">
-                <li class="nav-item fs-5">
-                    <a href="../index.php" class="color nav-link" draggable="true">Back to
-                        home</a></li>
-            </ul>
+            <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img class="innovation-logo" src="innovationImages/smrt_logo_light.png" alt="">
+            </div>
         </header>
     </div>
     <div class="container fs-5">
@@ -87,7 +81,7 @@ if (isset($_POST["login"])) {
     } else {
         if (array_key_exists($username, $superAdmins) && $superAdmins[$username] === $password) {
                 $_SESSION["super_admin_username"] = $_POST["username"];
-                header("Location: super_admin_home.php");
+                header("Location: frontend/super_admin_home.php");
             } else {
                 echo '<script>alert("Invalid username or password");</script>';
             }

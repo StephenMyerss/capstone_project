@@ -32,17 +32,7 @@ include("../php_scripts/functions.php");
 </div>
 
 <?php
-// Display success message if exists
-if (isset($_SESSION['success_message'])) {
-    echo '<div id="successMessage" class="alert alert-success">' . $_SESSION['success_message'] . '</div>';
-    unset($_SESSION['success_message']); // Clear the message after displaying it
-}
-
-// Display error message if exists
-if (isset($_SESSION['error_message'])) {
-    echo '<div id="errorMessage" class="alert alert-danger">' . $_SESSION['error_message'] . '</div>';
-    unset($_SESSION['error_message']); // Clear the message after displaying it
-}
+include("../php_scripts/displaySessionMessage.php");
 ?>
 
 <div class="container fs-5 mt-3">
@@ -93,19 +83,8 @@ if (isset($_SESSION['error_message'])) {
     </footer>
 </div>
 
-<script>
-    // Automatically hide success and error messages after 1 second
-    setTimeout(function() {
-        var successMessage = document.getElementById("successMessage");
-        if (successMessage) {
-            successMessage.style.display = "none";
-        }
-        var errorMessage = document.getElementById("errorMessage");
-        if (errorMessage) {
-            errorMessage.style.display = "none";
-        }
-    }, 1000);
-</script>
+<!--script to hide the session message after 1 sec-->
+<script src="../js/script.js"></script>
 
 </body>
 </html>
