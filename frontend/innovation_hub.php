@@ -37,7 +37,7 @@ include("../php_scripts/functions.php");
         <div class="px-4 my-5 text-center">
             <img class="custom-rounded img-fluid d-block mx-auto mb-4" src="../innovationImages/smrt_logo_dark.png"
                  alt="" width="250" height="250">
-            <h1 class="display-4 fw-bold text-body-emphasis">Innovation Hub</h1>
+            <h1 class="display-4 fw-bold text-body-emphasis">Idea Submission</h1>
             <div class="col-lg-6 mx-auto">
                 <p class="lead mb-4">Innovation begins with you. The smrt innovation hub is a user-friendly innovation
                     engine software that fosters
