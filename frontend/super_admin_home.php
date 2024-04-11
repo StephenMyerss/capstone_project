@@ -69,7 +69,7 @@ include("../php_scripts/functions.php");
                         echo '</div><div class="row">';
                     }
                     echo '<div class="col-md-4">';
-                    echo $row['CompanyName'];
+                    echo "<td><a href='Company.php?company=" . urlencode($row['CompanyName']) . "'>" . htmlspecialchars($row['CompanyName']) . "</a></td>";
                     echo '</div>';
                     $count++;
                 }
@@ -82,33 +82,6 @@ include("../php_scripts/functions.php");
             }
             ?>
             
-            <h2 class="py-3 mb-4 display-5 fw-bold">Admins From</h2>
-            <div class="container">
-                <form method="get" action="super_admin_home.php">
-                
-                    <div class="row justify-content-center mb-5">
-                        <div class="col-md-6 fs-5">
-                            <!-- <label class="fw-bold" for="exampleFormControlSelect1">Admins From</label> -->
-                            
-                            <select class="form-control border-3" id="exampleFormControlSelect1" name="company">
-                                <?php generateCompanyOptions(); ?>
-                            </select>
-                        </div>
-                        <div class="col-md-6 fs-5">
-                        <button name="submit" type="submit" class="button-color button-width fs-5 btn btn-primary fw-bold">
-                            Filter</button>
-                    </div>
-                    </div>
-
-                    
-                </form>
-            </div>
-
-            <div id="adminList" class="list-group">
-                <?php filterAdminsBasedOnCompany($_GET['company'] ?? null); ?>
-            </div>
-
-        </div>
     </div>
 
 
