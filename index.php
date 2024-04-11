@@ -52,7 +52,12 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
     <div class="container">
         <div class="px-5 pt-5 my-2 text-center border-bottom border-dark">
             <h1 class="display-4 fw-bold text-body-emphasis">Making changes within</h1>
-            <h1 class="display-4 fw-bold text-body-emphasis"><?php echo $_SESSION['companyName']; ?></h1>
+            <h1 class="display-4 fw-bold text-body-emphasis">
+                <?php if (isset($_SESSION['companyName'])): ?>
+                    <?php echo $_SESSION['companyName']; ?>
+                <?php else: ?>
+                    <?php echo " Company" ?>
+                <?php endif; ?></h1>
             <div class="col-lg-6 mx-auto">
               <p class="lead mb-4">Smrt brings about change to the workplace and allows employees to let their voices be heard through a simple submission form.</p>
             </div>
