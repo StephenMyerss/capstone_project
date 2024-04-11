@@ -35,7 +35,6 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
             <ul class="nav align-items-center">
                 <li class="nav-item fs-5">
                     <?php if (isset($_SESSION['companyName'])): ?>
-                        Company: <?php echo $_SESSION['companyName']; ?>
                         <ul class="nav align-items-center">
                             <li class="nav-item fs-5">
                                 <a href="frontend/innovation_hub.php" class="color nav-link" draggable="true">Idea Submission</a>
@@ -51,15 +50,15 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
     </div>
 
     <div class="container">
-        <div class="px-5 pt-5 my-5 text-center border-bottom border-dark">
+        <div class="px-5 pt-5 my-2 text-center border-bottom border-dark">
             <h1 class="display-4 fw-bold text-body-emphasis">Making changes within</h1>
-            <h1 class="display-4 fw-bold text-body-emphasis">the workplace</h1>
+            <h1 class="display-4 fw-bold text-body-emphasis"><?php echo $_SESSION['companyName']; ?></h1>
             <div class="col-lg-6 mx-auto">
-              <p class="lead mb-4">Smrt Innovation Hub brings about change to the workplace and allows employees to let their voices be heard through a simple submission form.</p>
+              <p class="lead mb-4">Smrt brings about change to the workplace and allows employees to let their voices be heard through a simple submission form.</p>
             </div>
             <div class="overflow-hidden">
               <div class="container px-5 mb-5">
-                <img src="innovationImages/website-image.png" class="img-fluid border rounded-3 shadow-lg mb-7" alt="Example image" width="700" height="500" loading="lazy">
+                <img src="innovationImages/ideas.png" class="img-fluid" alt="Example image" width="700" height="500" loading="lazy">
               </div>
             </div>
           </div>
