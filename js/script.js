@@ -43,3 +43,8 @@ setTimeout(function() {
         errorMessage.style.display = "none";
     }
 }, 1000);
+
+// go back to most recent page
+function goBack() {
+    window.history.back();
+}

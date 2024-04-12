@@ -18,13 +18,13 @@ include("../database/connect.php");
 
 <div class="container header">
     <header class="d-flex flex-wrap justify-content-center py-3 border-bottom border-dark">
-        <a href="../index.php"
+        <a href="super_admin_home.php"
            class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png"
                  alt="">
         </a>
         <ul class="nav align-items-center">
-            <li class="nav-item fs-5"><a href="super_admin_home.php" class="color nav-link" draggable="true">Back to Super Admin</a>
+            <li class="nav-item fs-5"><a href="super_admin_home.php" class="color nav-link" draggable="true">Back to Home</a>
             </li>
         </ul>
     </header>

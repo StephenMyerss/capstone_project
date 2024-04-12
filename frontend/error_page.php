@@ -28,11 +28,6 @@ session_start();
             </li>
         </ul>
 
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
     </header>
 </div>
 

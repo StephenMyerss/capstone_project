@@ -19,13 +19,14 @@ include("../php_scripts/functions.php");
 
 <div class="container header">
     <header class="d-flex flex-wrap justify-content-center py-3 border-bottom border-dark">
-        <a href="../index.php"
+        <a href="super_admin_home.php"
            class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png"
                  alt="">
         </a>
         <ul class="nav align-items-center">
-            <li class="nav-item fs-5"><a href="super_admin_home.php" class="color nav-link" draggable="true">Back to Super Admin</a>
+            <li class="nav-item fs-5">
+                <a href="company.php?company=<?php echo urlencode($_GET['company']); ?>" class="color nav-link" draggable="true">Back to Admin</a>
             </li>
         </ul>
     </header>
@@ -35,21 +36,36 @@ include("../php_scripts/functions.php");
 include("../php_scripts/displaySessionMessage.php");
 ?>
 
+<script>
+    // Automatically hide success and error messages after 1 second
+    setTimeout(function() {
+        var successMessage = document.getElementById("successMessage");
+        if (successMessage) {
+            successMessage.style.display = "none";
+        }
+        var errorMessage = document.getElementById("errorMessage");
+        if (errorMessage) {
+            errorMessage.style.display = "none";
+        }
+    }, 1000);
+</script>
+
 <div class="container fs-5 mt-3">
     <div class="login-container">
         <form id="add-admin-form" action="../php_scripts/admin_submission.php" method="post">
             <div class="row mb-3">
                 <div class="col-md-6 offset-md-3">
-                    <label class="form-label fw-bold" for="adminName">Admin Name</label>
-                    <input type="text" class="form-control border-3" id="adminName" name="adminName" required>
+                    <label class="form-label fw-bold" for="exampleFormControlSelect1">Company Name</label>
+                    <p class="form-control border-3" style="background-color: #e9ecef; color: #6c757d; cursor: not-allowed;">
+                        <?php echo $_GET['company'] ?? '' ?></p>
+                    <!-- Hidden input field to pass the company name -->
+                    <input type="hidden" name="companyName" value="<?php echo $_GET['company'] ?? '' ?>">
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-6 offset-md-3">
-                    <label class="form-label fw-bold" for="exampleFormControlSelect1">Company Name</label>
-                    <select class="form-control border-3" id="exampleFormControlSelect1" name="company">
-                        <?php generateCompanyOptions(); ?>
-                    </select>
+                    <label class="form-label fw-bold" for="adminName">Admin Name</label>
+                    <input type="text" class="form-control border-3" id="adminName" name="adminName" required>
                 </div>
             </div>
             <div class="row mb-3">

@@ -7,7 +7,7 @@ if (isset($_POST["addAdmin"])) {
     $adminName = filter_input(INPUT_POST, "adminName", FILTER_SANITIZE_SPECIAL_CHARS);
     $adminEmail = filter_input(INPUT_POST, "adminEmail", FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
-    $companyName = $_POST["company"];
+    $companyName = $_POST["companyName"];
 
     // Check if the email already exists
     $checkEmailQuery = "SELECT * FROM Admin WHERE AdminEmail = '$adminEmail'";
@@ -15,7 +15,7 @@ if (isset($_POST["addAdmin"])) {
 
     if (mysqli_num_rows($checkEmailResult) > 0) {
         $_SESSION['error_message'] = "Admin Email already exists. Please use a different email.";
-        header("Location: ../frontend/add_admin.php");
+        header("Location: ../frontend/add_admin.php?company=" . urlencode($companyName));
         exit();
     } else {
         // If the email doesn't exist, proceed with registration
@@ -29,7 +29,7 @@ if (isset($_POST["addAdmin"])) {
 
             if ($result) {
                 $_SESSION['success_message'] = "Admin added successfully.";
-                header("Location: ../frontend/add_admin.php");
+                header("Location: ../frontend/add_admin.php?company=" . urlencode($companyName));
                 exit();
             } else {
                 echo "Registration failed. Please try again.";
