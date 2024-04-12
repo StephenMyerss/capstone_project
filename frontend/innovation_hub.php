@@ -26,7 +26,9 @@ include("../php_scripts/functions.php");
 
             <ul class="nav align-items-center">
                 <li class="nav-item fs-5">
-                    <a href="../index.php" class="color nav-link" draggable="true">Back to home</a>
+                    <button name="login" type="submit" class="button-color button-width btn btn-primary fs-5 fw-bold ">
+                        Back to home
+                    </button>
                 </li>
             </ul>
 
