@@ -12,6 +12,7 @@ include("../php_scripts/functions.php");
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
+        <script src="../js/script.js"></script>
         <title>Company Home</title>
         <style>
             .login-container {
@@ -30,43 +31,59 @@ include("../php_scripts/functions.php");
             <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png" alt="">
             </div>
+            <ul class="nav align-items-center">
+                <li class="nav-item fs-5">
+                    <a href="super_admin_home.php" class="color nav-link" draggable="true">Back to Home</a>
+                </li>
+            </ul>
         </header>
     </div>
 
+    <?php $companyName = $_GET['company'] ?? '' ?>
+
+    <?php
+    include("../php_scripts/displaySessionMessage.php");
+    ?>
+
+    <script>
+        // Automatically hide success and error messages after 1 second
+        setTimeout(function() {
+            var successMessage = document.getElementById("successMessage");
+            if (successMessage) {
+                successMessage.style.display = "none";
+            }
+            var errorMessage = document.getElementById("errorMessage");
+            if (errorMessage) {
+                errorMessage.style.display = "none";
+            }
+        }, 1000);
+    </script>
+
     <div class="container">
+
         <div class="container fs-4 ">
-
-            <h2 class="mb-4 display-5 fw-bold">Companies</h2>
-
-            <h2 class="py-3 mb-4 display-5 fw-bold">Admins From</h2>
-            <div class="container">
-                <form method="get" action="super_admin_home.php">
-
-                    <div class="row justify-content-center mb-5">
-                        <div class="col-md-6 fs-5">
-                            <!-- <label class="fw-bold" for="exampleFormControlSelect1">Admins From</label> -->
-
-                            <select class="form-control border-3" id="exampleFormControlSelect1" name="company">
-                                <?php generateCompanyOptions(); ?>
-                            </select>
-                        </div>
-                        <div class="col-md-6 fs-5">
-                            <button name="submit" type="submit" class="button-color button-width fs-5 btn btn-primary fw-bold">
-                                Filter</button>
-                        </div>
-                    </div>
-
-
-                </form>
-            </div>
+            <h2 class="py-3 mb-4 display-5 fw-bold">Admins From <?php echo $companyName ?> </h2>
 
             <div id="adminList" class="list-group">
                 <?php filterAdminsBasedOnCompany($_GET['company'] ?? null); ?>
             </div>
+        </div>
+
+        <div class="col-md-6 d-flex justify-content-start mt-3">
+            <a href="add_admin.php?company=<?php echo urlencode($companyName); ?>" class="color nav-link fs-5" draggable="true">Add Admin</a>
+        </div>
+
+        <div id="ideaList" class="list-group mt-3">
+            <span style="font-weight: bold; font-size: 25px;">Ideas</span>
+            <!-- Ideas will be dynamically populated here -->
+            <?php
+            $_SESSION["company_id"] = getCompanyIdFromName($companyName);
+            include("../php_scripts/admin_page.php"); // Include the PHP script to generate ideas
+            ?>
 
         </div>
-    </div>
 
+    </div>
 
     <div class="container mt-auto">
         <footer class="py-3 my-4 border-top border-dark">

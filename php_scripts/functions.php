@@ -52,13 +52,12 @@ function filterAdminsBasedOnCompany($companyName) {
     if (mysqli_num_rows($fetchAdmins) > 0) {
         // Admins with the given company exist
         echo "<table>";
-        echo "<tr><th>Name</th><th>Email</th><th>Password Reset</th></th></tr>";
+        echo "<tr><th>Name</th><th>Email</th></th></tr>";
 
         while ($row = mysqli_fetch_assoc($fetchAdmins)) {
             echo "<tr>";
-            echo "<td>" . htmlspecialchars($row["AdminName"]) . "</td>";
+            echo "<td><a href='../frontend/edit_admin.php?adminEmail=" . urlencode($row["AdminEmail"]) . "'>" . htmlspecialchars($row["AdminName"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["AdminEmail"]) . "</td>";
-            echo "<td><a href='../frontend/password_reset.php?adminEmail=" . urlencode($row["AdminEmail"]) . "'>Here</a></td>";
             echo "</tr>";
         }
 

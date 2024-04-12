@@ -2,7 +2,11 @@
 
 include("../database/connect.php");
 
-$admin_company_id = $_GET["admin_company_id"] ?? $_SESSION["admin_company_id"];
+if (isset($_SESSION["company_id"])) {
+    $admin_company_id = $_SESSION["company_id"];
+} else {
+    $admin_company_id = $_GET["admin_company_id"] ?? $_SESSION["admin_company_id"];
+}
 
 // Check if the filter dates are set
 $startDate = $_GET['startDate'] ?? null;
@@ -36,7 +40,6 @@ if ($status === 'All') {
 $stmt = mysqli_prepare($conn, $sql);
 
 if ($stmt) {
-
     // Bind the date parameters if they are set
     if (!empty($startDate) && !empty($endDate)) {
         mysqli_stmt_bind_param($stmt, "sss", $admin_company_id, $startDate, $endDate);
@@ -62,22 +65,25 @@ if ($stmt) {
         echo "<th style='width: 220px;'>Submission Date</th>";
         echo "<th>Idea</th>";
         echo "</tr>";
-    
+
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row["InnovatorFirstName"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["InnovatorLastName"]) . "</td>";
-            echo "<td><a href='../frontend/comment.php?idea_id=" . urlencode($row["IdeaID"]) . "'>" . htmlspecialchars($row["IdeaID"]) . "</a></td>";
+            // making idea_id url only for admins but static for superadmins
+            echo isset($_SESSION["company_id"]) ?
+                "<td>" . htmlspecialchars($row["IdeaID"]) . "</td>" :
+                "<td><a href='../frontend/comment.php?idea_id=" . urlencode($row["IdeaID"]) . "'>" . htmlspecialchars($row["IdeaID"]) . "</a></td>";
             echo "<td>" . htmlspecialchars($row["SubmissionDate"]) . "</td>";
             echo "<td>" . htmlspecialchars($row["IdeaSubmission"]) . "</td>";
             echo "</tr>";
         }
-    
+
         echo "</table>";
     } else {
         echo "No records found";
     }
-    
+
 
     mysqli_stmt_close($stmt);
 } else {

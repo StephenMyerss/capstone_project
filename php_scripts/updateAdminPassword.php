@@ -21,12 +21,12 @@ if (isset($_POST['resetPasswordAdmin'])) {
     if ($result) {
         // Password updated successfully
         $_SESSION['success_message'] = "Password updated successfully!";
-        header("Location: ../frontend/password_reset.php?adminEmail=" . urlencode($adminEmail));
+        header("Location: ../frontend/edit_admin.php?adminEmail=" . urlencode($adminEmail));
         exit();
     } else {
         // Password update failed
         $_SESSION['error_message'] = "Sorry, could not update Password!";
-        header("Location: ../frontend/password_reset.php?adminEmail=" . urlencode($adminEmail));
+        header("Location: ../frontend/edit_admin.php?adminEmail=" . urlencode($adminEmail));
         exit();
     }
 }
