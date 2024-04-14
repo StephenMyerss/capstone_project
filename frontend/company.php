@@ -31,11 +31,17 @@ include("../php_scripts/functions.php");
             <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png" alt="">
             </div>
-            <ul class="nav align-items-center">
-                <li class="nav-item fs-5">
-                    <a href="super_admin_home.php" class="color nav-link" draggable="true">Back to Home</a>
-                </li>
-            </ul>
+
+            <form method="post" action="" class="nav align-items-center">
+                <ul class="nav align-items-center">
+                    <li class="nav-item fs-5">       
+                        <a href="./super_admin_home.php" class="button-color button-width fs-5 btn btn-primary fw-bold">
+                            Back
+                        </a>
+                    </li>
+                </ul>
+            </form>
+
         </header>
     </div>
 
@@ -69,9 +75,14 @@ include("../php_scripts/functions.php");
             </div>
         </div>
 
-        <div class="col-md-6 d-flex justify-content-start mt-3">
-            <a href="add_admin.php?company=<?php echo urlencode($companyName); ?>" class="color nav-link fs-5" draggable="true">Add Admin</a>
+        <div class="container">
+        <div class="row justify-content-start pt-4">
+            <div class="col-md-6 d-flex justify-content-start">
+                <a href="add_admin.php?company=<?php echo urlencode($companyName); ?>" class="button-color button-width fs-5 btn btn-primary fw-bold" draggable="true">Add Admin</a>
+            </div>
         </div>
+        
+        
 
         <div id="ideaList" class="list-group mt-3">
             <span style="font-weight: bold; font-size: 25px;">Ideas</span>
@@ -81,6 +92,7 @@ include("../php_scripts/functions.php");
             include("../php_scripts/admin_page.php"); // Include the PHP script to generate ideas
             ?>
 
+        </div>
         </div>
 
     </div>

@@ -36,14 +36,16 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
                 <li class="nav-item fs-5">
                     <?php if (isset($_SESSION['companyName'])): ?>
                         <ul class="nav align-items-center">
-                            <button name="login" type="submit" class="button-color button-width btn btn-primary fs-5 fw-bold ">
+                            <a href="./frontend/innovation_hub.php" name="idea_sub" type="submit" class="button-color button-width btn btn-primary fs-5 fw-bold ">
                                 Idea Submission
-                            </button>
+                            </a>
                         </ul>
                     <?php else: ?>
-                        <button name="login" type="submit" class="button-color button-width btn btn-primary fs-5 fw-bold ">
+                        <ul class="nav align-items-center">
+                            <a href="./frontend/admin_login_home.php" type="submit" class="button-color button-width btn btn-primary fs-5 fw-bold ">
                                 Admin Portal
-                            </button>
+                            </a>
+                        </ul>
                     <?php endif; ?>
                 </li>
             </ul>

@@ -24,11 +24,10 @@ include("../php_scripts/functions.php");
             <div class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img class="innovation-logo" src="../innovationImages/smrt_logo_light.png" alt="">
             </div>
-            <form method="post" action="">
+            <form method="post" action="" class="nav align-items-center">
                 <ul class="nav align-items-center">
-                    <li class="nav-item fs-5">
-                        <button name="logout" type="submit"
-                                class="button-color button-width fs-5 btn btn-primary fw-bold">
+                    <li class="nav-item fs-5">       
+                        <button name="logout" type="submit" class="button-color button-width fs-5 btn btn-primary fw-bold">
                             Logout
                         </button>
                     </li>
@@ -58,7 +57,7 @@ include("../php_scripts/functions.php");
     <div class="container">
         <div class="container fs-4 ">
 
-            <h2 class="mb-4 display-5 fw-bold">Companies</h2>
+            <h2 class="pt-5 display-5 fw-bold">Companies</h2>
 
             <?php
 
@@ -78,7 +77,7 @@ include("../php_scripts/functions.php");
                         echo '</div><div class="row">';
                     }
                     echo '<div class="col-md-4">';
-                    echo "<td><a href='Company.php?company=" . urlencode($row['CompanyName']) . "'>" . htmlspecialchars(
+                    echo "<td><a href='Company.php?company=" . urlencode($row['CompanyName']) . "' class='custom-link'>" . htmlspecialchars(
                             $row['CompanyName']
                         ) . "</a></td>";
                     echo '</div>';
@@ -94,16 +93,17 @@ include("../php_scripts/functions.php");
             ?>
 
             <div class="container">
-                <div class="row justify-content-start mt-5">
+                <div class="row justify-content-start pt-3">
                     <div class="col-md-6 d-flex justify-content-start">
-                        <a href="add_company.php" class="color nav-link fs-5" draggable="true">Add Company</a>
+                        <a href="add_company.php" class="button-color button-width fs-5 btn btn-primary fw-bold" draggable="true">Add Company</a>
                     </div>
                 </div>
 
                 <form id="deleteForm" method="post" action="../php_scripts/delete_company.php">
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="exampleFormControlSelect1">Select a Company to Delete</label>
+                            <!-- <label class="form-label" for="exampleFormControlSelect1">Select a Company to Delete</label> -->
+                            <h2 class="pt-3 display-5 fw-bold">Select a Company to Delete</h2>
                             <div style="display: flex; align-items: center;">
                                 <select class="form-control border-3" id="exampleFormControlSelect1" name="deleteCompany" style="margin-right: 10px;">
                                     <?php generateCompanyOptions(); ?>
