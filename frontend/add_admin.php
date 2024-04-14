@@ -26,7 +26,7 @@ include("../php_scripts/functions.php");
         </a>
         <ul class="nav align-items-center">
             <li class="nav-item fs-5">
-                <a href="company.php?company=<?php echo urlencode($_GET['company']); ?>" class="color nav-link" draggable="true">Back to Admin</a>
+                <a href="company.php?company=<?php echo urlencode($_GET['company']); ?>" class="button-color button-width fs-5 btn btn-primary fw-bold" draggable="true">Back to Admin</a>
             </li>
         </ul>
     </header>

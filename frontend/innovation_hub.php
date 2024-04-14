@@ -26,18 +26,18 @@ include("../php_scripts/functions.php");
 
             <ul class="nav align-items-center">
                 <li class="nav-item fs-5">
-                    <button name="login" type="submit" class="button-color button-width btn btn-primary fs-5 fw-bold ">
-                        Back to home
-                    </button>
+                    <a href="../index.php" class="button-color button-width fs-5 btn btn-primary fw-bold" draggable="true">Back to home</a>
                 </li>
             </ul>
+
+
 
         </header>
     </div>
 
     <div class="container">
         <div class="px-4 my-5 text-center">
-            <img class="custom-rounded img-fluid d-block mx-auto mb-4" src="../innovationImages/smrt_logo_dark.png"
+            <img class="custom-rounded img-fluid d-block mx-auto mb-3" src="../innovationImages/smrt_logo_dark.png"
                  alt="" width="250" height="250">
             <h1 class="display-4 fw-bold text-body-emphasis">Idea Submission</h1>
             <div class="col-lg-6 mx-auto">
@@ -52,7 +52,7 @@ include("../php_scripts/functions.php");
         <form method="post">
 
             <div class="container">
-                <div class="mx-auto col-md-6 fs-5 form-check py-3 justify-content-center">
+                <div class="mx-auto col-md-6 fs-5 form-check py-3 pt-0 mt-0 justify-content-center">
                     <input class="form-check-input border-4" type="checkbox" value="" id="defaultCheck1"
                            name="anonymous" onclick="toggleFields()">
                     <label class="fw-bold form-check-label" for="defaultCheck1">Anonymous Post</label>
@@ -79,7 +79,7 @@ include("../php_scripts/functions.php");
             </div>
 
             <div class="row justify-content-center">
-                <div class="mx-auto col-md-6 fs-5 form-group mb-3">
+                <div class="mx-auto col-md-6 fs-5 form-group">
                     <label class="fw-bold" for="exampleFormControlInput1">Email</label>
                     <input name="email" type="text" class="form-control border-3" id="email">
                 </div>
@@ -96,7 +96,7 @@ include("../php_scripts/functions.php");
                 </div>
             </div>
 
-            <div class="text-center py-3">
+            <div class="text-center py-0">
                 <button name="submit" type="submit" class="button-color button-width fs-5 btn btn-primary fw-bold">
                     Submit
                 </button>

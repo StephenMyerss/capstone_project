@@ -39,3 +39,9 @@
 .button-width {
     width: 200px;
 }
+
+.custom-link {
+    text-decoration: none; /* Remove underline */
+    color: #243665; /* Set color to red; replace with your desired color code */
+}
+
