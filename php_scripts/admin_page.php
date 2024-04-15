@@ -90,6 +90,6 @@ if ($stmt) {
     echo "Error in preparing the SQL statement";
 }
 
-mysqli_close($conn);
+//mysqli_close($conn);
 
 ?>
