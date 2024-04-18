@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include("../database/connect.php");
 include("../php_scripts/functions.php");
