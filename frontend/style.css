@@ -40,6 +40,10 @@
     width: 200px;
 }
 
+.button-width-admin{
+    width: 250px;
+}
+
 .custom-link {
     text-decoration: none; /* Remove underline */
     color: #243665; /* Set color to red; replace with your desired color code */

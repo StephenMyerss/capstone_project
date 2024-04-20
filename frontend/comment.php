@@ -22,7 +22,7 @@ include("../database/connect.php");
             </div>
             <form method="post" action="">
                 <ul class="nav align-items-center">
-                    <li class="nav-item fs-5"><a href="admin.php" class="color nav-link" draggable="true">Back to Admin home</a></li>
+                    <li class="nav-item fs-5"><a href="admin.php" class="button-color button-width-admin btn btn-primary fs-5 fw-bold" draggable="true">Back to Admin home</a></li>
                 </ul>
             </form>
         </header>
