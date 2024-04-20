@@ -33,7 +33,7 @@ Gives an error for url wiithout company name or not existent company name
 http://localhost/capstone_project/submit_idea.php?company=AppleSamsung
 http://localhost/capstone_project/submit_idea.php
 
-While submitting company name, it has to be unique regardless of case
+While submitting company, both name and URL have to be unique regardless of case
 
 The landing page has a link to access admin portal only
 
