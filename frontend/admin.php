@@ -2,6 +2,7 @@
 ob_start();
 session_start();
 include("../database/connect.php");
+include("../php_scripts/functions.php");
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -78,6 +79,9 @@ include("../database/connect.php");
 
             <div class="text-center py-3">
                 <button name="submit" type="submit" class="button-color button-width fs-5 btn btn-primary fw-bold"">Filter</button>
+                <button id="exportButton" class="button-color button-width fs-5 btn btn-primary fw-bold">Export Ideas</button>
+                
+
             </div>
         </form>
 
@@ -88,6 +92,7 @@ include("../database/connect.php");
             ?>
 
         </div>
+        
     </div>
 
 
@@ -107,6 +112,25 @@ include("../database/connect.php");
     });
     document.getElementById('clearEndDateBtn').addEventListener('click', function() {
         document.getElementById('endDate').value = ''; // Clear the startDate input
+    });
+    document.getElementById('exportButton').addEventListener('click', function() {
+    // AJAX request to server
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../php_scripts/export.php', true);
+    xhr.responseType = 'document';
+    console.log("HELLELEP")
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var xmlString = new XMLSerializer().serializeToString(xhr.response);
+            var blob = new Blob([xmlString], { type: 'text/xml' });
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'export.xml';
+            link.click();
+        }
+    };
+
+    xhr.send();
     });
 </script>
 
