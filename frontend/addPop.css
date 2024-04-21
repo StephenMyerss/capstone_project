@@ -1,0 +1,85 @@
+.popup-add-content {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px; /* Add padding to create space */
+    text-align: left;
+    max-width: 600px; /* Adjust max-width as needed */
+    flex-grow: 1; /* Fill the remaining space */
+    display: flex; /* Change display to flex */
+    flex-direction: column;
+    justify-content: space-between; /* Adjust for space between content and buttons */
+    align-items: flex-start; /* Align items to the start (left side) */
+    border-radius: 18px;
+    border: 2px solid #000;
+    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.5); /* Add shadow */
+}
+
+.popup-add-content p {
+    margin-bottom: 20px; /* Add margin to create space below the paragraph */
+    font-weight: bold;
+    font-size: 25px;
+    color: #000000;
+}
+
+.popup-add-content .input-container {
+    margin-bottom: 15px; /* Adjust margin as needed */
+}
+
+.popup-add-content .input-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.popup-add-content .input-container input {
+    width: 400px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup-add-content .input-container:last-child {
+    margin-bottom: 20px; /* Add margin to create space below the last input field */
+}
+
+.popup-add-content .buttons-container {
+    display: flex; /* Use flexbox for button alignment */
+    justify-content: flex-end; /* Align buttons to the right */
+    width: 100%; /* Ensure buttons stretch across the container */
+    gap: 25px; /* Adjust gap between buttons */
+}
+
+.popup-add-content .buttons-container button {
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-add-content #confirmAdd {
+    background-color: #259b04; /* Change to the desired button color */
+    color: #ffffff;
+}
+
+.popup-add-content #confirmAdd:hover {
+    background-color: #74e000; /* Change to the desired hover color */
+}
+
+.popup-add-content #cancelAdd {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.popup-add-content #cancelAdd:hover {
+    background-color: #d3d3d3; /* Change to the desired hover color */
+}
+
+.blur {
+    filter: blur(2px); /* Adjust the blur intensity as needed */
+}
+
+.transparent-field {
+    background-color: rgba(80, 77, 77, 0.3);
+}
