@@ -22,11 +22,15 @@ Now, you can start the project:
 
 NOTE:
 
+Admin portal
+http://localhost/capstone_project/
+
 Super Admin login is accessible from url only
 http://localhost/capstone_project/super_admin.php
 
 Idea submission only appears when accessing with a valid company name in url
 http://localhost/capstone_project/submit_idea.php?company=Apple
+
 Here Apple can be replaced by any existing company
 
 Gives an error for url wiithout company name or not existent company name
