@@ -28,18 +28,6 @@ CREATE TABLE IF NOT EXISTS Innovator
 );
 ";
 
-// SQL script to create the IH_Support table
-$sqlIH_Support = "
-CREATE TABLE IF NOT EXISTS IH_Support
-(
-  IHSID INT NOT NULL AUTO_INCREMENT,
-  IHSName VARCHAR(30) NOT NULL,
-  IHSEmail VARCHAR(50) NOT NULL,
-  IHSPassword VARCHAR(30) NOT NULL,
-  PRIMARY KEY (IHSID)
-);
-";
-
 // SQL script to create the Admin table
 $sqlAdmin = "
 CREATE TABLE IF NOT EXISTS Admin
