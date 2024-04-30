@@ -41,7 +41,9 @@ $insertAdmins = "INSERT INTO admin(AdminName, AdminPassword, AdminEmail, Company
     ('admin7', '$password', 'admin7@admin.com', 7),
     ('admin8', '$password', 'admin8@admin.com', 8),
     ('admin9', '$password', 'admin9@admin.com', 9),
-    ('admin10', '$password', 'admin10@admin.com', 10)";
+    ('admin10', '$password', 'admin10@admin.com', 10),
+    ('admin11', '$password', 'admin11@admin.com', 1),
+    ('admin12', '$password', 'admin12@admin.com', 2)";
     
 
 // An array of random ideas to simulate different ideas
@@ -58,14 +60,19 @@ $dummyIdeas = array(
     'With a gentle smile, she reached out and held his hand, silently reassuring him.'
 );
 
+// random comments
+$comment1 = "Wow, amazing!";
+$comment2 = "I totally agree with you.";
+$comment3 = "This is really helpful.";
+
 // Inserts the Companies and Employees
 if (
-    mysqli_query($conn, $insertCompanyData ) && 
+    mysqli_query($conn, $insertCompanyData) &&
     mysqli_query($conn, $insertDummyPeople) &&
     mysqli_query($conn, $insertAdmins)
-    ) 
+    )
     {
-    echo "data inserted.";
+    echo "Company, Innovator and Admins inserted.";
 } else {
     echo "Error inserting data: " . mysqli_error($conn);
 }
@@ -75,8 +82,8 @@ $startYear = strtotime("-10 year");
 $endYear = strtotime("now");
 
 $c = 0;
-
-// Simulates a person entering 10 different ideas for each of the 10 companies
+$k = 0;
+// Simulates a person entering 15 different ideas for each of the 10 companies
 for ($i = 0; $i < 13; $i++) {
     for ($j = 0; $j < 5; $j++) {
 
@@ -93,10 +100,42 @@ for ($i = 0; $i < 13; $i++) {
         $randomIdea = rand(0, 9);
 
         $insertDummyIdeas = "INSERT INTO idea (InnovatorID, IdeaSubmission, CompanyID, SubmissionDate) VALUES ($i + 1, '{$dummyIdeas[$randomIdea]}', $c + 1, '$randomDate')";
-        mysqli_query($conn, $insertDummyIdeas) ;
+        if (mysqli_query($conn, $insertDummyIdeas)) {
+            $k++;
+            echo "Idea inserted.". $k;
+        } else {
+            echo "Idea insertion failed: " . mysqli_error($conn);
+        }
     }
     $c++;
 }
+
+        $insertIntoCommentTable = "INSERT INTO Comment (IdeaID, AdminID, CommentSubmission)
+        VALUES (1, 1, '{$comment1}')";
+
+        $insertIntoCommentTable2 = "INSERT INTO Comment (IdeaID, AdminID, CommentSubmission)
+        VALUES (1, 11, '{$comment2}')";
+
+        $insertIntoCommentTable3 = "INSERT INTO Comment (IdeaID, AdminID, CommentSubmission)
+        VALUES (55, 1, '{$comment3}')";
+
+        if (mysqli_query($conn, $insertIntoCommentTable)  ) {
+            echo "Comment 1 inserted.";
+        } else {
+            echo "Comment 1 insertion failed: " . mysqli_error($conn);
+        }
+
+        if (mysqli_query($conn, $insertIntoCommentTable2)  ) {
+            echo "Comment 2 inserted.";
+        } else {
+            echo "Comment 2 insertion failed: " . mysqli_error($conn);
+        }
+
+        if (mysqli_query($conn, $insertIntoCommentTable3)  ) {
+            echo "Comment 3 inserted.";
+        } else {
+            echo "Comment 3 insertion failed: " . mysqli_error($conn);
+        }
 
 // Close the connection to the 'innovationhub' database
 mysqli_close($conn);
