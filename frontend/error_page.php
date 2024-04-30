@@ -22,12 +22,6 @@ session_start();
                  alt="">
         </a>
 
-        <ul class="nav align-items-center">
-            <li class="nav-item fs-5">
-                <a href="#" onclick="goBack()" class="color nav-link" draggable="true">Back</a>
-            </li>
-        </ul>
-
     </header>
 </div>
 
