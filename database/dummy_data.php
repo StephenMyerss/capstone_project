@@ -32,19 +32,18 @@ $insertDummyPeople = "INSERT INTO innovator (InnovatorAnonymous, InnovatorFirstN
 
 $password = password_hash('admin', PASSWORD_DEFAULT);
 $insertAdmins = "INSERT INTO admin(AdminName, AdminPassword, AdminEmail, CompanyID) Values
-    ('admin1', '$password', 'admin1@admin.com', 1),
-    ('admin2', '$password', 'admin2@admin.com', 2),
-    ('admin3', '$password', 'admin3@admin.com', 3),
-    ('admin4', '$password', 'admin4@admin.com', 4),
-    ('admin5', '$password', 'admin5@admin.com', 5),
-    ('admin6', '$password', 'admin6@admin.com', 6),
-    ('admin7', '$password', 'admin7@admin.com', 7),
-    ('admin8', '$password', 'admin8@admin.com', 8),
-    ('admin9', '$password', 'admin9@admin.com', 9),
-    ('admin10', '$password', 'admin10@admin.com', 10),
-    ('admin11', '$password', 'admin11@admin.com', 1),
-    ('admin12', '$password', 'admin12@admin.com', 2)";
-    
+    ('adminGoogle', '$password', 'adminGoogle@admin.com', 1),
+    ('adminMicrosoft', '$password', 'adminMicrosoft@admin.com', 2),
+    ('adminApple', '$password', 'adminApple@admin.com', 3),
+    ('adminAmazon', '$password', 'adminAmazon@admin.com', 4),
+    ('adminFacebook', '$password', 'adminFacebook@admin.com', 5),
+    ('adminNetflix', '$password', 'adminNetflix@admin.com', 6),
+    ('adminTwitter', '$password', 'adminTwitter@admin.com', 7),
+    ('adminTesla', '$password', 'admin8Teslaadmin.com', 8),
+    ('adminAdobe', '$password', 'adminAdobe@admin.com', 9),
+    ('adminIBM', '$password', 'adminIBM@admin.com', 10),
+    ('adminGoogle2', '$password', 'adminGoogle2@admin.com', 1),
+    ('adminMicrosoft2', '$password', 'adminMicrosoft2@admin.com', 2)";
 
 // An array of random ideas to simulate different ideas
 $dummyIdeas = array(

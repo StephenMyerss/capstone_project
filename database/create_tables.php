@@ -73,7 +73,6 @@ CREATE TABLE IF NOT EXISTS Comment
 if (
     mysqli_query($conn, $sqlCompany) &&
     mysqli_query($conn, $sqlInnovator) &&
-    mysqli_query($conn, $sqlIH_Support) &&
     mysqli_query($conn, $sqlAdmin) &&
     mysqli_query($conn, $sqlIdea) &&
     mysqli_query($conn, $sqlComment)) {
